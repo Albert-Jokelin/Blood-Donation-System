@@ -1,2 +1,2 @@
 # Blood-Donation-System
-Sem-2 project for python lab. 
+Sem-3 project for python lab. 
