@@ -1,5 +1,4 @@
 from django.contrib import admin
-from.models import BloodBank, Hospital
+from.models import Hospital
 
-admin.site.register(BloodBank)
 admin.site.register(Hospital)

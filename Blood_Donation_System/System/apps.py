@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class SystemConfig(AppConfig):
-    name = 'System'
+class HospitalConfig(AppConfig):
+    name = 'Hospital'
 

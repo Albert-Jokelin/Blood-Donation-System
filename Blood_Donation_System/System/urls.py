@@ -15,8 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+import Blood_Donation_System.System.views as views
 
 
 urlpatterns = [
+    path('', views.index, name='Home'),
     path('admin/', admin.site.urls, name='Admin'),
+    #path('search/')
 ]

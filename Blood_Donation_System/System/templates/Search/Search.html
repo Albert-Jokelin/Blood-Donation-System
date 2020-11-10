@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search</title>
+</head>
+<body>
+    <h1>Search the directory</h1>
+    <h2>List of all blood banks, clinics and hospitals.</h2>
+    <ul>
+        {% for hospital in all_hospitals %}
+        <li><a href="/Search/{{ bloodbank.id }}"> {{ bloodbank.name }} </a> </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
