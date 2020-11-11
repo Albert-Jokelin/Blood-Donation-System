@@ -13,4 +13,7 @@ class Hospital(models.Model):
     donate_blood = models.BooleanField()
 
     def __str__(self):
-        return self.name + ' ' + str(self.phone_number )+ '  ' + str(self.pincode)
+        return self.name
+
+    def url(self):
+        return self.url

@@ -5,6 +5,6 @@ from . import views
 urlpatterns = [
 
     path('', views.index),
-    #path('Search/', 'newsearch/Search.html'),
+    path('details/<int:hospital_id>/', views.details),
 
 ]

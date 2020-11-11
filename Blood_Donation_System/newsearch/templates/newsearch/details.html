@@ -2,9 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Details</title>
+    <title>Details for {{hospital.name}}</title>
 </head>
 <body>
-    pass
+<p>
+    Name : {{ hospital }} <br>Type : {{ hospital.type }}<br>Pincode : {{ hospital.pincode }}<br>
+    {% if hospital.test_blood%}
+        This {{ hospital.type }} accepts blood test.<br>
+    {% else %}
+        This {{ hospital.type }} does NOT accept blood tests.<br>
+    {% endif %}
+    {% if hospital.donate_blood %}
+        This {{ hospital.type }} accepts blood donations. <br>
+    {% else %}
+        This {{ hospital.type }} does NOT accept blood donations. <br>
+    {% endif %}
+
+    <a href={{hospital.map_url}}> Click here to get directions ...</a>
+</p>
+
 </body>
 </html>

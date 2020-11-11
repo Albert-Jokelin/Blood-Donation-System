@@ -10,7 +10,7 @@
     {% if all_hospitals%}
         <ul>
             {% for hospital in all_hospitals %}
-                <li> {{ hospital }} </li>
+            <li> <a href= {{ hospital.url }} > {{ hospital }} </a> {{hospital.phone_number}}  {{hospital.pincode}} </li>
             {% endfor %}
         </ul>
     {% else %}
