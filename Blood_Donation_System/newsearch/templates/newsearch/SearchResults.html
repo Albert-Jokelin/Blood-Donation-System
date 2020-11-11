@@ -11,11 +11,11 @@
         <input type="submit" placeholder="Search!"/>
     </form>
 
-    <h2>List of all blood banks, clinics and hospitals.</h2>
-    {% if all_hospitals%}
+    <h2>List of all blood banks, clinics and hospitals from search query.</h2>
+    {% if query %}
         <ul>
-            {% for hospital in all_hospitals %}
-            <li> <a href= {{ hospital.url }} > {{ hospital }} </a> {{hospital.phone_number}}  {{hospital.pincode}} </li>
+            {% for obj in query %}
+            <li> <a href= {{ obj.url }} > {{ obj }} </a> {{obj.phone_number}}  {{obj.pincode}} </li>
             {% endfor %}
         </ul>
     {% else %}

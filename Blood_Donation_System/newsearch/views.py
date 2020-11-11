@@ -1,6 +1,7 @@
-from django.shortcuts import render
-from django.http import Http404
 from django.db.models import Q
+from django.http import Http404
+from django.shortcuts import render
+
 from .models import Hospital
 
 
@@ -9,7 +10,14 @@ def index(request):
     for hospital in all_hospitals:
         url = 'details/' + str(hospital.hospital_id) + '/'
         hospital.url = url
-    return render(request, 'newsearch/Search.html', {'all_hospitals': all_hospitals})
+    context = {'all_hospitals': all_hospitals}
+    if request.GET:
+        query = request.GET['q']
+        results = search(query)
+        context = {'query': results}
+        return render(request, 'newsearch/SearchResults.html', context)
+
+    return render(request, 'newsearch/Search.html', context)
 
 
 def details(request, hospital_id):
@@ -20,11 +28,16 @@ def details(request, hospital_id):
     return render(request, 'newsearch/details.html', context={'hospital': hospital})
 
 
-def search(request):
+def search(query=None):
     template = 'newsearch/details.html'
+    #query = request.GET.get('q')
+    query_set = []
+    queries = query.split(" ") # Create a set of words with space as delimiter
 
-    query = request.GET.get('q')
+    for q in queries:
+        posts = Hospital.objects.filter(
+            Q(name__icontains=q)).distinct()
 
-    results = Hospital.objects.filter(Q(name__icontains=query) | Q(type__icontains=query))
-
-    pages = 0
+        for post in posts:
+            query_set.append(post)
+    return list(set(query_set))
