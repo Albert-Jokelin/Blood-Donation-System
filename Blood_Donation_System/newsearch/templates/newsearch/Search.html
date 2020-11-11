@@ -7,10 +7,14 @@
 <body>
     <h1>Search the directory</h1>
     <h2>List of all blood banks, clinics and hospitals.</h2>
-    <ul>
-        {% for hospital in all_hospitals %}
-        <li> {{ hospital }} </li>
-        {% endfor %}
-    </ul>
+    {% if all_hospitals%}
+        <ul>
+            {% for hospital in all_hospitals %}
+                <li> {{ hospital }} </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <h3>No entries present</h3>
+    {%endif%}
 </body>
 </html>

@@ -1,20 +1,20 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-from django.template import loader
+from django.http import Http404
 from .models import Hospital
 
 
 def index(request):
     all_hospitals = Hospital.objects.all()
+    html = ''
+    for hospital in all_hospitals:
+        url = '/details/' + str(hospital.hospital_id) + '/'
+        hospital.url = url
+    return render(request, 'newsearch/Search.html', {'all_hospitals': all_hospitals})
 
-    context = {
-        'all_hospitals': all_hospitals,
-    }
-    return render(request, 'newsearch/Search.html', context)
 
-#def other():
- #   html = ''
-  #  for bloodbanks in all_bloodbanks:
-   #     url = '/bloodbanks/' + str(bloodbanks.id) + '/'
-
-# Create your views here.
+def details(request, hospital_id):
+    try:
+        hospital = Hospital.objects.get(hospital_id=hospital_id)
+    except Hospital.DoesNotExist:
+        raise Http404("This hospital does not exist")
+    return render(request, 'newsearch/details.html', context={'hospital': hospital})

@@ -2,6 +2,8 @@ from django.db import models
 
 
 class Hospital(models.Model):
+    hospital_id = models.IntegerField()
+    url = models.CharField(max_length=1000)
     name = models.CharField(max_length=250)
     type = models.CharField(max_length=50)  # Classify objects into blood banks, labs, clinics and hospitals
     map_url = models.CharField(max_length=250)
