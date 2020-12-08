@@ -18,6 +18,10 @@ class Hospital(models.Model):
     phone_number = models.IntegerField()
     test_blood = models.BooleanField()
     donate_blood = models.BooleanField()
+    x = models.DecimalField(decimal_places=5, max_digits=8, default=0.00000)
+    y = models.DecimalField(decimal_places=5, max_digits=8, default=0.00000)
+    address = models.CharField(max_length=500, default="LOREM IPSUM")
+    image_url = models.CharField(max_length=250, default="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYlm9vhkUbpK0HCU53rdbzsFSSYNpLDgPPpQ&usqp=CAU")
 
     def __str__(self):
         return self.name

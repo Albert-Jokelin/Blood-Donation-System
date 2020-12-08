@@ -2,44 +2,34 @@
     <html lang="en">
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Search</title>
         {% load static %}
-        <link rel="stylesheet" href="{% static 'styles.css' %}">
-        <style>
-             html {
-             background: linear-gradient(rgba(218,68,83), rgba(137, 33, 107)) no-repeat center fixed;
-             background-size: cover;
-             }
-
-             body{
-             margin: 0;
-             body: 0;
-             color: white;
-             }
-             h1{
-             position: absolute;
-             font-size: 80px;
-             left: 50%;
-             transform: translate(-50%, -50%);
-             }
-        </style>
+        <link rel="stylesheet" href="{% static '/css/styles2.css' %}">
     </head>
     <body>
         <h1>Search Results</h1>
         <form method="get">
-            <input type="text" name="q" id="id_q" placeholder="Search Database" />
-            <input type="submit" placeholder="Search!"/>
-        </form>
-
-        <h2>List of all blood banks, clinics and hospitals from search query.</h2>
-        {% if query %}
-            <ul>
-                {% for obj in query %}
-                <li> <a href= {% url 'details' obj.hospital_id %} > {{ obj }} </a> {{obj.phone_number}}  {{obj.pincode}} </li>
-                {% endfor %}
-            </ul>
-        {% else %}
-            <h3>No entries present</h3>
-        {%endif%}
+        <div class="wrapper">
+            <input type="text" class="input" name="q" id="id_q" placeholder="Search Database....">
+            <div class="searchbtn" >
+                {% load static %}
+                <input type="image" alt="search" src="{% static '/images/active-search.png' %}"/>
+            </div>
+        </div>
+    </form>
+        <div class="results">
+            <div class="objects menu">
+            {% if query %}
+                <ul>
+                    {% for obj in query %}
+                    <li> <a href= {% url 'details' obj.hospital_id %} > {{ obj }} &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; +{{obj.phone_number}} &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; {{obj.pincode}} </a> </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <h3>No entries present</h3>
+            {%endif%}
+            </div>
+        </div>
     </body>
     </html>

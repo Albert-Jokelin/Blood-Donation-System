@@ -1,25 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:height="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Details for {{hospital.name}}</title>
-    <style>
-         html {
-         background: linear-gradient(rgba(218,68,83), rgba(137, 33, 107)) no-repeat center fixed;
-         background-size: cover;
-         }
-
-         body{
-         margin: 0;
-         body: 0;
-         color: white;
-         }
-    </style>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/css/details.css' %}">
 </head>
 <body>
-<p>
-    Name : {{ hospital }} <br>Type : {{ hospital.type }}<br>Pincode : {{ hospital.pincode }}<br>
-    {% if hospital.test_blood%}
+<a href={%url 'search'%}>
+    <div class="container">
+        System Search
+    </div>
+</a>
+<div class="mainbody">
+    <img id="myImg"src={{hospital.image_url}}>
+        <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+      <!-- The Close Button -->
+      <span class="close">&times;</span>
+
+      <!-- Modal Content (The Image) -->
+      <img class="modal-content" id="img01">
+
+      <!-- Modal Caption (Image Text) -->
+      <div id="caption"></div>
+    </div>
+    <script>
+        // Get the modal
+        var modal = document.getElementById("myModal");
+
+        // Get the image and insert it inside the modal - use its "alt" text as a caption
+        var img = document.getElementById("myImg");
+        var modalImg = document.getElementById("img01");
+        var captionText = document.getElementById("caption");
+        img.onclick = function(){
+          modal.style.display = "block";
+          modalImg.src = this.src;
+          captionText.innerHTML = this.alt;
+        }
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+          modal.style.display = "none";
+        }
+
+    </script>
+    <div class="head1">
+        {{ hospital }}
+    </div>
+    <div class="type">
+        {{hospital.type}}, Pincode : {{ hospital.pincode }}
+    </div>
+    <div class="para">
+        Notes: <br>
+         {% if hospital.test_blood%}
         This {{ hospital.type }} accepts blood test.<br>
     {% else %}
         This {{ hospital.type }} does NOT accept blood tests.<br>
@@ -29,9 +69,31 @@
     {% else %}
         This {{ hospital.type }} does NOT accept blood donations. <br>
     {% endif %}
-
+        <br><br>Address:<br>{{ hospital.address }}<br><br><br>
     <a href={{hospital.map_url}}> Click here to get directions ...</a>
-</p>
+    </div>
 
+<div id="map"></div>
+
+  <script>
+
+  // initialize the map
+  var lat = {{hospital.x}}
+  var lon = {{hospital.y}}
+  var map = L.map('map').setView([lat, lon], 15);
+
+  // load a tile layer
+  L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+        maxZoom: 18,
+        minZoom: 9,
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+            '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+            'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        id: 'mapbox.streets'
+    }).addTo(map);
+
+    var marker= L.marker([lat, lon]).addTo(map);
+  </script>
+</div>
 </body>
 </html>

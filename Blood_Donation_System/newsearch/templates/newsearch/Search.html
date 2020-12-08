@@ -4,92 +4,13 @@
     <meta charset="UTF-8">
     <title>Search</title>
     <script src="https://kit.fontawesome.com/61161d2963.js" crossorigin="anonymous"></script>
-    <style>
-         html {
-         background: linear-gradient(rgba(218,68,83), rgba(137, 33, 107)) no-repeat center fixed;
-         background-size: cover;
-         }
-         @import url('https://fonts.googleapis.com/css?family=Roboto');
-*{
-	margin: 0;
-	padding: 0;
-	outline: none;
-	box-sizing: border-box;
-	font-family: 'Roboto';
-}
-
-body{
-         margin: 0;
-         body: 0;
-         width: 100%;
-         height: 100vh;
-         color: white;
-         }
-h1{
-position: absolute;
-font-size: 80px;
-top: 35%;
-left: 50%;
-transform: translate(-50%, -50%);
-}
-.para{
-position: absolute;
-top:90%;
-}
-.wrapper{
-	position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    max-width: 550px;
-    width: 100%;
-    padding: 15px;
-    display: flex;
-    justify-content: space-between;
-    border-radius: 5px;
-}
-
-.wrapper .input {
-    width: 85%;
-    padding: 15px 20px;
-    border: none;
-    border-radius: 5px;
-    font-weight: regular;
-}
-
-.searchbtn {
-    width: 25%;
-    margin-left: 10px;
-    border-radius: 5px;
-    padding: 10px;
-    position: relative;
-    cursor: pointer;
-    background: white;
-}
-
-
-input[type="image"] {
-    position: relative;
-    width:35px;
-    height:35px;
-    top: 50%;
-    left: 50%;
-    border-radius: 2px;
-    transform: translate(-50%, -50%);
-    background-color: transparent;
-    background-repeat:no-repeat;
-    border: none;
-    cursor:pointer;
-    overflow: hidden;
-    outline:none;
-}
-    </style>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static '/css/styles.css' %}">
 </head>
 <body>
 <h1>System Search</h1>
     <form method="get">
         <div class="wrapper">
-
             <input type="text" class="input" name="q" id="id_q" placeholder="Search Database....">
             <div class="searchbtn" >
                 {% load static %}
