@@ -3,9 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <title>Search</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <style>
+         html {
+         background: linear-gradient(rgba(218,68,83), rgba(137, 33, 107)) no-repeat center fixed;
+         background-size: cover;
+         }
+
+         body{
+         margin: 0;
+         body: 0;
+         color: white;
+         }
+         h1{
+         position: absolute;
+         font-size: 80px;
+         left: 50%;
+         transform: translate(-50%, -50%);
+         }
+    </style>
 </head>
 <body>
-    <h1>Search the directory</h1>
+    <h1>Search Results</h1>
     <form method="get">
         <input type="text" name="q" id="id_q" placeholder="Search Database" />
         <input type="submit" placeholder="Search!"/>
@@ -15,7 +35,7 @@
     {% if query %}
         <ul>
             {% for obj in query %}
-            <li> <a href= {{ obj.url }} > {{ obj }} </a> {{obj.phone_number}}  {{obj.pincode}} </li>
+            <li> <a href= {% url 'details' obj.hospital_id %} > {{ obj }} </a> {{obj.phone_number}}  {{obj.pincode}} </li>
             {% endfor %}
         </ul>
     {% else %}

@@ -1,8 +1,15 @@
 from django.db import models
 
+choose={
+    (0, 'Hospitals'),
+    (1, 'Clinics'),
+    (2, 'Blood Banks'),
+    (3, 'Labs'),
+}
+
 
 class Hospital(models.Model):
-    hospital_id = models.IntegerField()
+    hospital_id = models.IntegerField(unique=True)
     name = models.CharField(max_length=250)
     type = models.CharField(max_length=50)  # Classify objects into blood banks, labs, clinics and hospitals
     map_url = models.CharField(max_length=250)

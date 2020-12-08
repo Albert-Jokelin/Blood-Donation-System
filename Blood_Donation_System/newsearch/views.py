@@ -29,8 +29,7 @@ def details(request, hospital_id):
 
 
 def search(query=None):
-    template = 'newsearch/details.html'
-    #query = request.GET.get('q')
+    # query = request.GET.get('q')
     query_set = []
     queries = query.split(" ") # Create a set of words with space as delimiter
 
