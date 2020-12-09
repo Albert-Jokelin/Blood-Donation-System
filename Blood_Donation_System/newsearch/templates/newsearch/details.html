@@ -69,6 +69,7 @@
     {% else %}
         This {{ hospital.type }} does NOT accept blood donations. <br>
     {% endif %}
+        <br>Call: {{hospital.phone_number}}<br>
         <br><br>Address:<br>{{ hospital.address }}<br><br><br>
     <a href={{hospital.map_url}}> Click here to get directions ...</a>
     </div>
