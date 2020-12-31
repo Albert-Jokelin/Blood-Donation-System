@@ -13,3 +13,6 @@ I created a database wherein hospitals, bloodbanks, clinics can share their info
 ->CSS
 ->JavaScript
 ->Django DB
+
+## Note: 
+Download the .rar file to get access to the database and the CSS files.
