@@ -15,7 +15,7 @@ I created a database wherein hospitals, bloodbanks, clinics can share their info
 - Django DB
 
 # Videos
-[![Watch the video](https://i.imgur.com/vKb2F1B.png)](https://youtu.be/mwF-Dz0OrJk)
+[![Watch the video](https://i.imgur.com/4Wp6i15.png)](https://youtu.be/mwF-Dz0OrJk)
 
 
 ## Note: 
