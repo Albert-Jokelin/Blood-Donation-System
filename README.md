@@ -8,11 +8,11 @@ Inspired NIT-Bhopal's drive to raise awareness on the importance of blood donati
 I created a database wherein hospitals, bloodbanks, clinics can share their information with the users. This information obtained using a search function.
 
 ## Languages and Tools used:
-->Python
-->HTML5
-->CSS
-->JavaScript
-->Django DB
+- Python
+- HTML5
+- CSS
+- JavaScript
+- Django DB
 
 ## Note: 
 Download the .rar file to get access to the database and the CSS files.
