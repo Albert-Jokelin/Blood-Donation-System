@@ -19,5 +19,5 @@ I created a database wherein hospitals, bloodbanks, clinics can share their info
 
 
 ## Note: 
-Complete project on: https://github.com/codesbyhussain/Covid-Supplies-V2
-Download the .rar file to get access to the database and the CSS files.
+- Complete project on: https://github.com/codesbyhussain/Covid-Supplies-V2.
+- Download the .rar file to get access to the database and the CSS files.
